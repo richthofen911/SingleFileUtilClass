@@ -1,0 +1,10 @@
+public void installedNonSystemApps() {
+    List<PackageInfo> PackList = getPackageManager().getInstalledPackages(0);
+    for (int i=0; i < PackList.size(); i++) {
+        PackageInfo PackInfo = PackList.get(i);
+        if ((PackInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
+            String AppName = PackInfo.applicationInfo.loadLabel(getPackageManager()).toString();
+            Log.e("Package Name: " + Integer.toString(i), AppName);
+        }
+    }
+}
